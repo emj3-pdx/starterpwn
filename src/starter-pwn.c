@@ -1,3 +1,6 @@
+// starter-pwn.c
+// Evan Johnson
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -17,6 +20,7 @@ int main(int argc, char **argv)
     exit(0);
 }
 
+// VULNERABLE FUNCTION
 void get_pwd(void)
 {
     // no other local variables, so the buffer size and location should be
@@ -34,8 +38,11 @@ void get_pwd(void)
     pwd[8] = '\0';
 }
 
-// this tells gcc and clang to compile this function and include it in the binary
-// despite the fact that it's not called anywhere in the program
+// TARGET FUNCTION
+// The __attribute__((used)) tells gcc and clang to compile this function and include
+// it in the binary despite the fact that it's not called anywhere in the program.
+// That's ABSOLUTELY ESSENTIAL to make this runnable by overwriting a return address using
+// the vuln in `get_pwd`.
 __attribute__((used))
 void set_pwd(void)
 {
