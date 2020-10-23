@@ -1,2 +1,22 @@
+# Purpose
+
+This is one of my first attempts at writing a pwn challenge. It's not
+terribly different from many other easy-ish pwn challenges, but it was
+written from scratch on a whim. While this isn't directly taken or
+based upon one specific challenge as far as I'm aware, it's not the
+most original work. Credit for inspiration and the knowledge that let
+me write this goes to all the other challenge authors out there whose
+pwn challenges I've attempted and sometimes even managed to solve!
+
+CTFs that deserve some credit for leading me down this path:
+
+- OregonCTF challenges
+- OSUSec's DamCTF 2020 (Spring and Fall)
+- NCL
+- CSI CTF 2020
+- UTCTF 2020
+
+# Prompt
+
 A starter pwn challenge masquerading as a program that sets a
 password on first use. Can you get it to accept your password?
