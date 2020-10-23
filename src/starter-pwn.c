@@ -21,6 +21,18 @@ int main(int argc, char **argv)
 }
 
 // VULNERABLE FUNCTION
+//
+// While inside this function, the stack should look about like this on an x86-64 system:
+//
+//          buf[0]    saved rbp
+//   low      v       vvvvvvvv         increasing memory addrs -->>
+//   addr     |       |       |       |     <-- 8-byte intervals
+//            -------------------------     <-- bytes
+//                   ^        ^^^^^^^^
+//                  buf[7]    return addr
+//
+// On x84-64, the return address will be little-endian, so the least-significant byte
+// will be closest to the overflowing buffer.
 void get_pwd(void)
 {
     // no other local variables, so the buffer size and location should be
